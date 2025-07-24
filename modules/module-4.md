@@ -15,20 +15,20 @@
   GATEWAY_SERVICE_IP=$(kubectl get services -n tigera-gateway -l 'gateway.envoyproxy.io/owning-gateway-name=eg' -o jsonpath='{.items[0].spec.clusterIP}')
   ```
 
-```bash,copy
-kubectl apply -f -<<EOF
-apiVersion: projectcalico.org/v3
-kind: NetworkSet
-metadata:
-  namespace: tigera-gateway
-  name: calico-ingress-gateways
-  labels:
-    calico-ingress-gateway: "true"
-spec:
-  nets:
-    - $GATEWAY_SERVICE_IP/0
-EOF
-```
+  ```bash,copy
+  kubectl apply -f -<<EOF
+  apiVersion: projectcalico.org/v3
+  kind: NetworkSet
+  metadata:
+    namespace: tigera-gateway
+    name: calico-ingress-gateways
+    labels:
+      calico-ingress-gateway: "true"
+  spec:
+    nets:
+      - $GATEWAY_SERVICE_IP/0
+  EOF
+  ```
 
 - Once again, generate traffic to the `/ns1` and `/ns2` paths.
 
@@ -49,24 +49,37 @@ EOF
 
 ### Limit traffic to or from external networks, IPs in network policy
 
-In the following example, a Calico NetworkPolicy allows egress traffic from pods with the label **color: red**, if it goes to an IP address in the 192.0.2.0/24 CIDR block.
+In the following example, a Calico NetworkPolicy allows ingress traffic from the Calico Ingress Gateway IPs.
 
 ```bash,copy
 kubectl apply -f -<<EOF
 apiVersion: projectcalico.org/v3
+kind: Tier
+metadata:
+  name: platform
+spec:
+  order: 400
+---
+apiVersion: projectcalico.org/v3
 kind: NetworkPolicy
 metadata:
-  name: allow-egress-external
+  name: platform.teset
   namespace: default
 spec:
-  selector:{}
-  types:
-    - Egress
+  tier: platform
+  selector: all()
+  serviceAccountSelector: ''
   egress:
     - action: Allow
+      protocol: TCP
+      source: {}
       destination:
         nets:
           - $GATEWAY_SERVICE_IP
+        ports:
+          - '80'
+  types:
+    - Egress
 EOF
 ```
 
@@ -101,13 +114,6 @@ metadata:
   name: security
 spec:
   order: 300
----
-apiVersion: projectcalico.org/v3
-kind: Tier
-metadata:
-  name: platform
-spec:
-  order: 400
 ---
 apiVersion: projectcalico.org/v3
 kind: GlobalNetworkPolicy

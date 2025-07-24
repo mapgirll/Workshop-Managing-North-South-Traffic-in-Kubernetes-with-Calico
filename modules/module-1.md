@@ -17,16 +17,15 @@ In this step, you will:
 
 1. Check that you have Calico Open Source 3.30 or greater installed, and that Calico Whisker is running in your cluster:
 
-   ```bash
-   kubectl get clusterinfo -o yaml
-   ```
+```bash
+kubectl get clusterinfo -o yaml
+```
 
 You are looking for the `calicoVersion` to be 3.30 or greater:
 
-```bash,nocopy
-  spec:
-    calicoVersion: v3.30.2
-```
+`spec:
+   calicoVersion: v3.30.2
+`
 
 2. Check that Calico Whisker is running:
 
@@ -34,16 +33,12 @@ You are looking for the `calicoVersion` to be 3.30 or greater:
 kubectl get pod -A | grep whisker
 ```
 
-```bash,nocopy
-calico-system        whisker-7557ccb558-hvngj                       2/2     Running
-```
+`calico-system        whisker-7557ccb558-hvngj                       2/2     Running`
 
 ```bash
 kubectl get svc -A | grep whisker
 ```
-```bash,nocopy
-calico-system      whisker                           ClusterIP   10.96.153.8     <none>        8081/TCP
-```
+`calico-system      whisker                           ClusterIP   10.96.153.8     <none>        8081/TCP`
 
 Calico Whisker should be running in the cluster on port 8081.
 
