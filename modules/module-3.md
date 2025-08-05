@@ -164,14 +164,14 @@ Calico L7 logs are visible in the web console, service graph, in the HTTP tab.
   
   You should be see all of the namespaces inside your cluster, including flows from the `default` namespace where the `test-client` pod lives, to the `tigera-gateway` namespace, which is where the Calico Ingress Gateway is processing and sending traffic to the `echoserver` backend services.
 
-  ![alt text](../images/NorthSouthWorkshop_L7Logs.gif)
+  ![alt text](../images/NorthSouthWorkshop_L7Logs.gif)(https://app.arcade.software/share/bvGEJlEis7Q0GQHtOe9M)
 
   Clicking on the flow line should auto-filter the flow logs on the bottom of the screen, and show some insights on the right-hand panel.
   The HTTP tab contains all of the L7, or application layer, logs. The information in the logs should match the output from the curl commands you issued from the `test-client` pod.
 
 - There is also a HTTP Traffic dashboard available:
   
-  ![alt text](../images/NorthSouthWorkshop_L7Dashboard.gif)
+  ![alt text](../images/NorthSouthWorkshop_L7Dashboard.gif)(https://app.arcade.software/share/UxIZp64iATNU7Ctvu4sP)
 
 ## L7 Network Policies
 
