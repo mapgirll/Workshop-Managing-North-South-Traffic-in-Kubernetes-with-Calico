@@ -389,7 +389,7 @@ By way of a simple example:
 
 - Filter the traffic flows by specifying the destinations as `echoserver-ns1` and `echoserver-ns2`, or by Source Namespace: `tigera-gateway`.
 
-  ![alt text](../images/Filter-ingress-flows.gif)(https://app.arcade.software/share/Y4sAW4isiKM1Yqpk461y)
+  [![alt text](../images/Filter-ingress-flows.gif)](https://app.arcade.software/share/Y4sAW4isiKM1Yqpk461y)
 
   You should see all of the flows (depending on how many times you ran the test commands):
 
