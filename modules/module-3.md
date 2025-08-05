@@ -267,7 +267,7 @@ EOF
   After a few moments (if not already) you should see that the policy is allowing traffic, and shows that it was one endpoint.
   You can click on the policy to view it, and also get filtered flow logs that show all traffic impacted by the policy, and the outcome.
 
-  ![alt text](../images/HTTPPolicy.gif)
+  ![alt text](../images/HTTPPolicy.gif)(https://app.arcade.software/share/TMr3Nev2APLdlwdu49b5)
 
   [:arrow_right: Module 4](module-4.md)  
   
