@@ -1,6 +1,6 @@
 # Module 1 - Getting Started with Calico Whisker
 
-Calico Whisker is a recent addition to Calico Open Source, enabling you to view flow logs to verify network traffic and create network policies.
+[Calico Whisker](https://app.arcade.software/share/eaXRLqtdnjomS6tSh3Pg) is a recent addition to Calico Open Source, enabling you to view flow logs to verify network traffic and create network policies.
 
 ## Prerequisites
 A Calico Open Source cluster, version 3.30+.
